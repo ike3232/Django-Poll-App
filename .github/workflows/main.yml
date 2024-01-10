@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
     strategy:
@@ -28,3 +28,32 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+
+  build:
+    
+    runs-on: ubuntu-latest
+    steps:
+    - name: Django-app
+      run: |
+        echo build:
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy Via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script:  |
+            cd stop-watch-app
+            git pull origin main
+            cd
+            sudo cp -r stop-watch-app/* /var/www/html
+
+
+
+    
+
+  

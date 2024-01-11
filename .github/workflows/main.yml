@@ -46,13 +46,3 @@ jobs:
             cd /home/ubuntu/Django-Poll-App
             git pull origin main
             gunicorn --bind 0.0.0.0:8000 pollme.wsgi:application
-            sudo touch /etc/systemd/system/gunicorn.service
-            sudo systemctl daemon-reload
-            sudo systemctl start /etc/systemd/system/gunicorn.service
-            sudo systemctl enable gunicorn.service
-
-
-
-    
-
-  

@@ -44,5 +44,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script:  |
             cd /home/ubuntu/Django-Poll-App
-            git pull origin main
+            git pull origin
             gunicorn --bind 0.0.0.0:8000 pollme.wsgi:application

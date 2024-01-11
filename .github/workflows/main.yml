@@ -39,9 +39,9 @@ jobs:
       - name: deploy Via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PRIVATE_KEY }}
+          host: ${{ SSH_HOST }}
+          username: ${{ SSH_USERNAME }}
+          key: ${{ SSH_PRIVATE_KEY }}
           script:  |
             cd /home/ubuntu/Django-Poll-App
             git pull origin main
